@@ -1,0 +1,11 @@
+{
+    "cSpell.words": [
+        "gdextension",
+        "raycasting"
+    ],
+    "rust-analyzer.linkedProjects": [
+        ".\\rust\\Cargo.toml"
+    ],
+    "rust-analyzer.showUnlinkedFileNotification": false,
+    "gdexRustHelper.relativeRustPath": "rust"
+}

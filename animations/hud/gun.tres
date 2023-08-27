@@ -1,0 +1,37 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://p3k05vca4mh5"]
+
+[ext_resource type="Texture2D" uid="uid://ctcy8cojw4yfr" path="res://art/gun.png" id="1_m4obl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r6cx"]
+atlas = ExtResource("1_m4obl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl3la"]
+atlas = ExtResource("1_m4obl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxipm"]
+atlas = ExtResource("1_m4obl")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r6cx")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl3la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxipm")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]

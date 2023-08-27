@@ -1,0 +1,13 @@
+[configuration]
+entry_symbol = "gdext_rust_init"
+compatibility_minimum = 4.1
+
+[libraries]
+linux.debug.x86_64 = "res://rust/target/debug/libin_the_deep.so"
+linux.release.x86_64 = "res://rust/target/release/libin_the_deep.so"
+windows.debug.x86_64 = "res://rust/target/debug/in_the_deep.dll"
+windows.release.x86_64 = "res://rust/target/release/in_the_deep.dll"
+macos.debug = "res://rust/target/debug/libin_the_deep.dylib"
+macos.release = "res://rust/target/release/libin_the_deep.dylib"
+macos.debug.arm64 = "res://rust/target/debug/libin_the_deep.dylib"
+macos.release.arm64 = "res://rust/target/release/libin_the_deep.dylib"

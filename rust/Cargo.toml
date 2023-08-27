@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "attributes",
+    "derive",
+    "macros",
+    "in-the-deep",
+]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://5dl4rermlijv"]
+
+[ext_resource type="Texture2D" uid="uid://wn5vlejeniae" path="res://art/enemies/owen.png" id="1_pb58j"]
+[ext_resource type="SpriteFrames" uid="uid://p3k05vca4mh5" path="res://animations/hud/gun.tres" id="2_5cnhg"]
+[ext_resource type="Texture2D" uid="uid://tefakf0cecuv" path="res://icon.svg" id="3_baykh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hdjp"]
+size = Vector3(1, 1, 0.001)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vyy6g"]
+radius = 0.144227
+height = 0.671041
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tugky"]
+size = Vector3(1, 1, 0.0261135)
+
+[node name="Game" type="Node3D"]
+
+[node name="Owen" type="Owen" parent="."]
+transform = Transform3D(-1, 0, -2.26998e-07, 0, 0.942715, 0, 8.74228e-08, 0, -2.59656, 0, 0, 5)
+texture_filter = 0
+texture = ExtResource("1_pb58j")
+
+[node name="Area3D" type="Area3D" parent="Owen"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Owen/Area3D"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_0hdjp")
+
+[node name="Player" type="Player" parent="." node_paths=PackedStringArray("input_manager", "neck", "camera")]
+input_manager = NodePath("../InputManager")
+neck = NodePath("Neck")
+camera = NodePath("Neck/Camera")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.542242, 0)
+
+[node name="HUD" type="CanvasLayer" parent="Player"]
+
+[node name="Control" type="PanelContainer" parent="Player/HUD"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_top = 0.737654
+anchor_right = 1.00028
+anchor_bottom = 1.00027
+offset_right = -0.32
+offset_bottom = -0.176003
+
+[node name="CenterContainer" type="CenterContainer" parent="Player/HUD/Control"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Gun" type="Gun" parent="Player/HUD/Control/CenterContainer" node_paths=PackedStringArray("shoot_point", "input_manager")]
+shoot_point = NodePath("../../../../Neck")
+input_manager = NodePath("../../../../../InputManager")
+scale = Vector2(4.5, 4.5)
+sprite_frames = ExtResource("2_5cnhg")
+animation = &"shoot"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_vyy6g")
+
+[node name="Neck" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 0, 0.239651, 0)
+
+[node name="Camera" type="Camera3D" parent="Player/Neck"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+current = true
+
+[node name="InputManager" type="InputManager" parent="."]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Environment"]
+transform = Transform3D(7.47327, 0, 0, 0, -3.26667e-07, -1, 0, 7.47327, -4.37114e-08, 0, -0.934963, 2)
+texture = ExtResource("3_baykh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Sprite3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Sprite3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_tugky")
